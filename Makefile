@@ -12,12 +12,13 @@ eval:
 	echo "" >> report.md; \
 	echo "| Metric | Value |" >> report.md; \
 	echo "|--------|-------|" >> report.md; \
-	tail -n +2 /PROJECT/diabetes-predictor/data/08_reporting/best_models_metrics.csv | while IFS=, read -r metric value; do echo "| $$metric | $$value |" >> report.md; done; \
+	tail -n +2 "diabetes-predictor/data/08_reporting/best_models_metrics.csv" | while IFS=, read -r metric value; do echo "| $$metric | $$value |" >> report.md; done; \
 	cml comment create report.md
 
 update-branch:
 	git config --global user.name "auto_ci_cd_bot"
 	git config --global user.email "spam@pjatk.edu.pl"
+	git add -A
 	git commit -am "Update with new results"
 	git push --force origin HEAD:ci_update
 
