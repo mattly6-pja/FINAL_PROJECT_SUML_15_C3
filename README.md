@@ -1,19 +1,24 @@
----
-title: FINAL CICD TEST
-emoji: 🚀
-colorFrom: red
-colorTo: red
-sdk: docker
-app_port: 8501
-tags:
-- streamlit
-pinned: false
-short_description: Streamlit template space
----
+<i>This project uses Python 3.11.</i>
 
-# Welcome to Streamlit!
+To run, after cloning:  
+1. Create a virtual environment:  
+   `python3.11 -m venv .venv`  
+2. Use created environment:  
+     _If on Linux:_  
+       `./.venv/Scripts/activate`  
+     _If on Windows:_  
+       `.\.venv\Scripts\activate.bat`
+3. Proceed to diabetes-predictor folder:  
+   `cd diabetes-predictor`   
+4. Install required packages:  
+   `pip install -r requirements.txt`  
+5. Run kedro:  
+   `kedro run`  
+6. You can also see pipeline visualisation by using below command:  
+   `kedro viz`  
+7. After kedro is finished, you can run the app via streamlit:  
+   `streamlit run streamlit_app.py`  
 
-Edit `/src/streamlit_app.py` to customize this app to your heart's desire. :heart:
+Exploratory data analysis is available in [eda.html](/diabetes-predictor/docs/eda_diabetes.html)
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+Metrics for the models are available in mertrics file at: /diabetes-predictor/data/08_reporting/best_models_metrics.csv
