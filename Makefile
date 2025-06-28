@@ -1,13 +1,13 @@
 install:
-	pip install --upgrade pip && pip install -r ./requirements.txt #copied the new requirements here, left the requirements inside PROJECT intact
+	pip install --upgrade pip && pip install -r ./requirements.txt
 
 format:
-	black *.py #do we even need this?
+	black *.py
 
 train:
 	run_kedro.py
 
-eval: #this should more or less work fine
+eval:
 	echo "## Model Metrics" > report.md
 	echo "" >> report.md
 	echo "| Metric | Value |" >> report.md
@@ -18,13 +18,13 @@ eval: #this should more or less work fine
 
 	cml comment create report.md
 
-update-branch: #this is OK leave it
+update-branch:
 	git config --global user.name "auto_ci_cd_bot"
 	git config --global user.email "spam@pjatk.edu.pl"
 	git commit -am "Update with new results"
 	git push --force origin HEAD:ci_update
 
-hf-login: #this is OK leave it
+hf-login:
 	git config --global user.name "auto_ci_cd_bot"
 	git config --global user.email "spam@pjatk.edu.pl"
 	git pull --no-rebase --allow-unrelated-histories origin ci_update
@@ -32,9 +32,9 @@ hf-login: #this is OK leave it
 	pip install -U "huggingface_hub[cli]"
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
-push-hub: #this is OK leave it
+push-hub:
 	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./ --repo-type=space --commit-message="Sync App files"
 	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Model /Model --repo-type=space --commit-message="Sync Model"
 	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Results /Metrics --repo-type=space --commit-message="Sync Model"
 
-deploy: hf-login push-hub #this is OK leave it
+deploy: hf-login push-hub
