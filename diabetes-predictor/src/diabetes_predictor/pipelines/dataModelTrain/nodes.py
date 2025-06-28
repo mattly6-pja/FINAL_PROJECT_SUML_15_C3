@@ -23,7 +23,7 @@ def split_data(data: pd.DataFrame, test_size: float = 0.2):
         "y_test": y_test
     }
 
-def train_model(split_output: dict, top_n: int = 15):
+def train_model(split_output: dict, top_n: int = 5):
     """
     Trenuje modele za pomocą PyCaret, wybiera top_n, ewaluje je na zbiorze testowym,
     zapisuje metryki i wybiera najlepszy model według Recall.
