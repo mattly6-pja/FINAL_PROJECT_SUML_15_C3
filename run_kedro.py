@@ -3,7 +3,7 @@ from pathlib import Path
 from kedro.framework.startup import bootstrap_project
 from kedro.framework.session import KedroSession
 
-PROJECT_PATH = Path(__file__).parent.resolve()
+PROJECT_PATH = "./diabetes-predictor"
 ENVIRONMENT = None  # lub "base"/"local" zgodnie z Twoim projektem
 
 if __name__ == "__main__":
