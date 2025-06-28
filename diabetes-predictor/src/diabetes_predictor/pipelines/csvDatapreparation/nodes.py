@@ -2,6 +2,7 @@ import pandas as pd
 import joblib
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+import os
 
 def _drop_unused_column(df: pd.DataFrame, col: str = "HbA1c_level") -> pd.DataFrame:
     """Usuń zbędne dane."""
@@ -27,7 +28,7 @@ def _build_preprocessor() -> ColumnTransformer:
     )
 
 def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
-
+    os.makedirs("data/06_models", exist_ok=True)
     # Kopiuje dane, usuwa HbA1c_level
     # Normalizuje historię palenia
     df = data.copy()
