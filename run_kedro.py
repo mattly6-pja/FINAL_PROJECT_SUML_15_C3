@@ -1,16 +1,16 @@
-from kedro.framework.project import configure_project
-from kedro.framework.session import KedroSession
-from pathlib import Path
 
-PROJECT_NAME = "diabetes_predictor"
+from pathlib import Path
+from kedro.framework.startup import bootstrap_project
+from kedro.framework.session import KedroSession
+
+PROJECT_PATH = Path(__file__).parent.resolve()
+ENVIRONMENT = None  # lub "base"/"local" zgodnie z Twoim projektem
 
 if __name__ == "__main__":
-    configure_project(PROJECT_NAME)
-    project_path = Path(__file__).resolve().parent
-
+    bootstrap_project(PROJECT_PATH)
     with KedroSession.create(
-        package_name=PROJECT_NAME,
-        project_path=project_path,
+        project_path=PROJECT_PATH,
+        env=ENVIRONMENT,
+        save_on_close=True,
     ) as session:
-        context = session.load_context()
-        context.run()
+        session.run()  # odpala domyślny pipeline __default__
