@@ -5,7 +5,7 @@ format:
 	black *.py
 
 train:
-	python3.11 run_kedro.py
+	python run_kedro.py
 
 eval:
 	echo "## Model Metrics" > report.md
