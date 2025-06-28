@@ -15,7 +15,12 @@ jobs:
       - uses: iterative/setup-cml@v2
       - name: Install Packages
         run: make install
+      - name: Format
+        run: make format
       - name: Train
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
         run: make train
       - name: Evaluation
         env:
