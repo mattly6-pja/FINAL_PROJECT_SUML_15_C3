@@ -32,7 +32,7 @@ hf-login:
 
 push-hub:
 	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./ --repo-type=space --commit-message="Sync App files"
-	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Model /Model --repo-type=space --commit-message="Sync Model"
-	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Results /Metrics --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./diabetes-predictor/src /diabetes-predictor/src --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./diabetes-predictor/tests /diabetes-predictor/tests --repo-type=space --commit-message="Sync Model"
 
 deploy: hf-login push-hub
