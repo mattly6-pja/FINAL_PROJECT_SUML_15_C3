@@ -1,5 +1,5 @@
 install:
-	pip install --upgrade pip && pip install -r ./requirements.txt
+	pip install --upgrade pip && pip install -r ./requirements.txt kedro kedro-datasets[pandas]
 
 format:
 	black *.py
