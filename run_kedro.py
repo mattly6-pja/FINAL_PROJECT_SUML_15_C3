@@ -1,12 +1,11 @@
-from kedro.framework.context import KedroContext
-from kedro.framework.project import configure_project, KedroSession
+from kedro.framework.project import configure_project
+from kedro.framework.session import KedroSession
 from pathlib import Path
 
 PROJECT_NAME = "diabetes_predictor"
 
 if __name__ == "__main__":
     configure_project(PROJECT_NAME)
-
     project_path = Path(__file__).resolve().parent
 
     with KedroSession.create(
