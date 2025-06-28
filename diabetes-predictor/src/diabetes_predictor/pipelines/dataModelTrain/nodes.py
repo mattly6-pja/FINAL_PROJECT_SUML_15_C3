@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from pycaret.classification import setup, compare_models, predict_model, pull, save_model
@@ -24,6 +26,7 @@ def split_data(data: pd.DataFrame, test_size: float = 0.2):
     }
 
 def train_model(split_output: dict, top_n: int = 15):
+    os.makedirs("data/08_reporting", exist_ok=True)
     """
     Trenuje modele za pomocą PyCaret, wybiera top_n, ewaluje je na zbiorze testowym,
     zapisuje metryki i wybiera najlepszy model według Recall.
