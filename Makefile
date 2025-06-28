@@ -8,14 +8,11 @@ train:
 	python run_kedro.py
 
 eval:
-	echo "## Model Metrics" > report.md
-	echo "" >> report.md
-	echo "| Metric | Value |" >> report.md
-	echo "|--------|-------|" >> report.md
-	tail -n +2 /PROJECT/diabetes-predictor/data/08_reporting/best_models_metrics.csv | while IFS=, read -r metric value; do
-	  echo "| $metric | $value |" >> report.md
-	done
-
+	echo "## Model Metrics" > report.md; \
+	echo "" >> report.md; \
+	echo "| Metric | Value |" >> report.md; \
+	echo "|--------|-------|" >> report.md; \
+	tail -n +2 /PROJECT/diabetes-predictor/data/08_reporting/best_models_metrics.csv | while IFS=, read -r metric value; do echo "| $$metric | $$value |" >> report.md; done; \
 	cml comment create report.md
 
 update-branch:
