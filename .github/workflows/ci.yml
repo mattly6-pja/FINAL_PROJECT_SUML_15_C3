@@ -19,6 +19,8 @@ jobs:
           python-version: '3.11'      
       - name: Install Packages
         run: make install
+      - name: Create reporting dir
+        run: mkdir -p data/08_reporting
       - name: Train
         run: make train
       - name: Evaluation
