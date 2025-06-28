@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  
+
 permissions: write-all
 jobs:
   build:
@@ -16,9 +16,13 @@ jobs:
       - name: SetUpPython
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'      
+          python-version: '3.11'
       - name: Install Packages
         run: make install
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Train
         run: make train
       - name: Evaluation
