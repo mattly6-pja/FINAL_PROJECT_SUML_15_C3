@@ -1,16 +1,17 @@
-# run_kedro.py
-
 from kedro.framework.context import KedroContext
-from kedro.framework.startup import bootstrap_project
-from kedro.framework.project import configure_project
+from kedro.framework.project import configure_project, KedroSession
+from pathlib import Path
 
-project_path = "./diabetes-predictor"
+PROJECT_NAME = "diabetes_predictor"
 
-bootstrap_project(project_path)
+if __name__ == "__main__":
+    configure_project(PROJECT_NAME)
 
-configure_project("diabetes-predictor")
+    project_path = Path(__file__).resolve().parent
 
-context = KedroContext.__new__(KedroContext)
-context.__init__(project_path=project_path)
-
-context.run()
+    with KedroSession.create(
+        package_name=PROJECT_NAME,
+        project_path=project_path,
+    ) as session:
+        context = session.load_context()
+        context.run()
