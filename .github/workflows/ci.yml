@@ -15,8 +15,6 @@ jobs:
       - uses: iterative/setup-cml@v2
       - name: Install Packages
         run: make install
-      - name: Format
-        run: make format
       - name: SetUpPython
         uses: actions/setup-python@v5
         with:
