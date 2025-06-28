@@ -5,8 +5,7 @@ format:
 	black *.py #do we even need this?
 
 train:
-	# no idea which part to run here nor how: kedro run ??
-	# -> huggingface expects a gradio project, no idea how to use streamlit with it nor how to replace streamlit with gradio in PROJECT :/
+	run_kedro.py
 
 eval: #this should more or less work fine
 	echo "## Model Metrics" > report.md
@@ -34,8 +33,8 @@ hf-login: #this is OK leave it
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
 push-hub: #this is OK leave it
-	huggingface-cli upload not4u2learn/SUML_15C_gr3_FINAL ./ --repo-type=space --commit-message="Sync App files"
-	huggingface-cli upload not4u2learn/SUML_15C_gr3_FINAL ./Model /Model --repo-type=space --commit-message="Sync Model"
-	huggingface-cli upload not4u2learn/SUML_15C_gr3_FINAL ./Results /Metrics --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./ --repo-type=space --commit-message="Sync App files"
+	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Model /Model --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload SUML15c3/FINAL_CICD_TEST ./Results /Metrics --repo-type=space --commit-message="Sync Model"
 
 deploy: hf-login push-hub #this is OK leave it
